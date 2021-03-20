@@ -5,7 +5,7 @@ build: requirements.txt
 	@. venv/bin/activate; pip install -r requirements.txt;
 
 run:
-	@echo "--GETTING data from Spotify--";
+	@echo "--GETTING data from blob storage--";
 	@. venv/bin/activate; python3 app/main.py;
 
 clean:

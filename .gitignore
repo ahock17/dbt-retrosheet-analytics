@@ -1,8 +1,8 @@
 # Python Environment and folders
 env
 venv
-spotify_analytics
 *.csv
+data
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -10,8 +10,14 @@ __pycache__/
 *$py.class
 
 # Secrets
-config.py
+configs.py
+config_template.py
 
 # Cached files
 .cache*
 debug.log
+.vscode
+
+target/
+dbt_modules/
+logs/

@@ -4,11 +4,13 @@ services:
     postgres:
         image: postgres
         container_name: postgres
+        volumes:
+          - ./postgres:/docker-entrypoint-initdb.d/
         restart: always
         environment:
           POSTGRES_USER: dbt
           POSTGRES_PASSWORD: password1
-          POSTGRES_DB: spotify
+          POSTGRES_DB: retrosheet
         ports:
           - 5432:5432
         networks:
@@ -20,7 +22,6 @@ services:
           dockerfile: Dockerfile
         container_name: dbt
         volumes:
-          - ./data:/data
           - ./dbt:/dbt_init
         command: /bin/bash -c "chmod +x /dbt_init/dbt_entrypoint.sh && /dbt_init/dbt_entrypoint.sh"
         ports: 

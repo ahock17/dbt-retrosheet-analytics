@@ -1,12 +1,12 @@
-spotify_analytics:
+retrosheet_analytics:
   outputs:
     dev:
       type: postgres
       threads: 1
-      host: postgres
+      host: localhost
       port: 5432
       user: dbt
       pass: password1
-      dbname: spotify
-      schema: dbt_spotify
+      dbname: retrosheet
+      schema: mart
   target: dev
