@@ -45,3 +45,73 @@ models:
       - name: league
         tests:
           - not_null
+  - name: fact_gamelog
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - game_date
+            - game_num
+            - vis_team_key
+            - home_team_key
+    columns:
+      - name: game_date
+        tests:
+          - not_null
+      - name: game_num
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['0', '1', '2', '3', 'A', 'B']
+      - name: home_team_key
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_team')
+              field: team_key
+      - name: vis_team_key
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_team')
+              field: team_key
+      - name: park_key
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_park')
+              field: park_key
+      - name: vis_team_mgr_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_person')
+              field: person_id
+      - name: home_team_mgr_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_person')
+              field: person_id
+      - name: winning_pitcher_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_person')
+              field: person_id
+      - name: losing_pitcher_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_person')
+              field: person_id
+      - name: saving_pitcher_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_person')
+              field: person_id
+      - name: day_night_ind
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Day', 'Night', 'Unknown']

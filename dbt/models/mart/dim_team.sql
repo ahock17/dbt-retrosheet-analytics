@@ -16,11 +16,23 @@ final as (
                 then date_part('year', CURRENT_DATE) 
             else last_year 
         end as last_year,
-        coalesce(
+        (coalesce(
             nullif(last_year, 2010), 
             date_part('year', CURRENT_DATE)
-        ) - first_year as tot_years
+        ) - first_year)::int as tot_years,
+        case when last_year = 2010 then TRUE else FALSE end as is_active
     from source
+    union all
+    select
+        MD5('UNKNOWN'),
+        'UNKNOWN',
+        'UNKNOWN',
+        'UNKNOWN',
+        'UNKNOWN',
+        0,
+        0,
+        0,
+        FALSE
 )
 select
     *

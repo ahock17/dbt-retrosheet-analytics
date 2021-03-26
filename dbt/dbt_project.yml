@@ -38,6 +38,6 @@ models:
     # Applies to all files under models/staging/
     staging:
       +materialized: view
-    # Applies to all files under models/view/
-    view:
+    # Applies to all files under models/agg/
+    agg:
       +materialized: view

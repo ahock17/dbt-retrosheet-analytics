@@ -1,0 +1,9 @@
+selectors:
+  - name: hourly_schedule
+    definition:
+      method: tag
+      value: hourly
+  - name: daily_schedule
+    definition: 
+      method: tag
+      value: daily

@@ -1,3 +1,9 @@
+{{
+    config(
+        tags="daily"
+    )
+}}
+
 with source as (
     select
         *
@@ -17,6 +23,19 @@ final as (
         case when coach_debut is not null then TRUE else FALSE end as is_coach,
         case when ump_debut is not null then TRUE else FALSE end as is_ump
     from source
+    union all
+    select
+        '00000000'::char(8),
+        'UNKNOWN',
+        'UNKNOWN',
+        '1700-01-01'::date,
+        '1700-01-01'::date,
+        '1700-01-01'::date,
+        '1700-01-01'::date,
+        FALSE::boolean,
+        FALSE::boolean,
+        FALSE::boolean,
+        FALSE::boolean
 )
 select
     *
