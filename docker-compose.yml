@@ -23,7 +23,7 @@ services:
         container_name: dbt
         volumes:
           - ./dbt:/dbt_init
-        command: /bin/bash -c "chmod +x /dbt_init/dbt_entrypoint.sh && /dbt_init/dbt_entrypoint.sh"
+        entrypoint: /dbt_init/dbt_entrypoint.sh
         ports: 
           - 8080:8080
         networks:

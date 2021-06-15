@@ -3,7 +3,7 @@ retrosheet_analytics:
     dev:
       type: postgres
       threads: 10
-      host: localhost
+      host: postgres
       port: 5432
       user: dbt
       pass: password1
